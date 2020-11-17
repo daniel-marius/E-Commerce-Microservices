@@ -1,1 +1,6 @@
-## E-Commerce App using Microservices build with Node, TypeScript, React, Docker and Kubernestes Part1
+## E-Commerce App using Microservices build with Node, TypeScript, MongoDB React, Docker and Kubernestes Part2
+
+## Features
+
+- Authentication and authorization with jsonwebtoken and cookie session
+-  TypeScript custom errors class-based approach
