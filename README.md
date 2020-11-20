@@ -1,1 +1,1 @@
-## E-Commerce App using Microservices build with Node, TypeScript, React, Docker and Kubernestes Part1
+## E-Commerce App using Microservices build with Node, TypeScript, React Next.js, Docker and Kubernestes Part1
