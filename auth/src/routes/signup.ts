@@ -1,24 +1,22 @@
 import express, { Request, Response, Router } from "express";
 import { body, validationResult } from "express-validator";
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
-import { validateRequest } from '../middlewares/validate-request';
-import { User } from '../models/user';
-import { RequestValidationError } from '../errors/request-validation-error';
-import { BadRequestError } from '../errors/bad-request-error';
+import { validateRequest } from "../middlewares/validate-request";
+import { User } from "../models/user";
+import { RequestValidationError } from "../errors/request-validation-error";
+import { BadRequestError } from "../errors/bad-request-error";
 
 const router: Router = express.Router();
 
 router.post(
   "/api/users/signup",
   [
-    body("email")
-      .isEmail()
-      .withMessage("Email must be valid!"),
+    body("email").isEmail().withMessage("Email must be valid!"),
     body("password")
       .trim()
       .isLength({ min: 6, max: 20 })
-      .withMessage("Password length must be between 6 and 20 characters!")
+      .withMessage("Password length must be between 6 and 20 characters!"),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
@@ -33,7 +31,7 @@ router.post(
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new BadRequestError('Email in use');
+      throw new BadRequestError("Email in use");
     }
 
     const user = User.build({ email, password });
@@ -45,14 +43,14 @@ router.post(
     const userJwt = jwt.sign(
       {
         id: user.id,
-        email: user.email
+        email: user.email,
       },
       process.env.JWT_KEY!
     );
 
     // Store it on session object
     req.session = {
-      jwt: userJwt
+      jwt: userJwt,
     };
 
     res.status(201).send(user);

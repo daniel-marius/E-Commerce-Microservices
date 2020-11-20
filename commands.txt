@@ -3,3 +3,8 @@ docker build -t daniel/auth .
 
 cd ticket
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=...
+
+cd client
+docker build -t daniel/client .
+
+kubectl expose deployment ingress-nginx-controller --target-port=80 --type=NodePort -n kube-system
