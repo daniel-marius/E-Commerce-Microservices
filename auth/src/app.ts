@@ -16,6 +16,7 @@ const app = express();
 // Traffic is proxied through nginx
 app.set('trust proxy', true);
 
+// Chnage secure property to false if we are in a testing environment
 app.use(json());
 app.use(
   cookieSession({
