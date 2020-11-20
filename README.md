@@ -1,4 +1,4 @@
-## E-Commerce App using Microservices build with Node, TypeScript, MongoDB React, Docker and Kubernestes Part4
+## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, React Next.js, Docker and Kubernestes Part4
 
 ## Features
 
