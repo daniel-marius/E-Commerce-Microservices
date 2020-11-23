@@ -8,6 +8,7 @@ const buildClient = ({ req }) => {
     // If you don't specify a domain,
     // node HTTP layer is going to assume that you are trying to make a request to localhost,
     // and it will add a domain automatically (e.g. 127.0.0.1/your_api)
+    // 'http://servicename.namespace.svc.cluster.local'
     return axios.create({
       baseURL: 'http://ingress-nginx-controller.kube-system.svc.cluster.local',
       headers: req.headers

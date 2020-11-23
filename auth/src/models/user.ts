@@ -33,6 +33,7 @@ const userSchema = new mongoose.Schema({
   }
 }, {
   toJSON: {
+    // Manipulates the JSON representation of data
     transform(doc, ret) {
       // doc - The mongoose document which is being converted
       // ret - The plain object representation which has been converted
