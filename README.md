@@ -11,4 +11,4 @@
 - NATS Streaming Server Event Bus Implementation
 - Managing NATS Client inside ticket service
 - New events are emitted when a ticket is created or updated
-- NATS reusable listener implemented via Abstract Class and Interface with TypeScript
+- NATS reusable listeners implemented via Abstract Class and Interface with TypeScript
