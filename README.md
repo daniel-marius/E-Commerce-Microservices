@@ -1,4 +1,4 @@
-## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, React Next.js, Docker and Kubernestes Part7
+## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, React Next.js, Docker and Kubernestes Part8
 
 ## Features
 
@@ -9,3 +9,6 @@
 - Common libraries published to NPM
 - New ticket service added to support basic operations (Create, Read, Update)
 - NATS Streaming Server Event Bus Implementation
+- Managing NATS Client inside ticket service
+- New events are emitted when a ticket is created or updated
+- NATS reusable listener implemented via Abstract Class and Interface with TypeScript

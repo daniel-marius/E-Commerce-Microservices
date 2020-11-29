@@ -13,16 +13,18 @@ kubectl get services -n kube-system
 kubectl expose deployment ingress-nginx-controller --target-port=80 --type=NodePort -n kube-system
 
 cd common/src
+npm version patch (increment version)
+npm run build
 npm login
 npm publish --access public
-npm version patch (increment version)
 npm update @ticketsms/common
 
 cd tickets
 docker build -t daniel/tickets .
 
 cd nats-test
-kubectl port-forward nats-depl-ffbcbb66-2zlhr 4222:4222
+kubectl get pods
+kubectl port-forward nats-depl-id 4222:4222
 
 cd ticketmsapp
 skaffold dev
