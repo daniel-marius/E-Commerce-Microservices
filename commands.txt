@@ -28,3 +28,6 @@ kubectl port-forward nats-depl-id 4222:4222
 
 cd ticketmsapp
 skaffold dev
+
+cd orders
+docker build -t daniel/orders .
