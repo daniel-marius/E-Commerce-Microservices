@@ -13,3 +13,4 @@
 - New events are emitted when a ticket is created or updated
 - NATS reusable listeners implemented via Abstract Class and Interface with TypeScript
 - New order service added to support basic operations (Create, Read, Delete)
+- New events are emitted when an order is created or cancelled
