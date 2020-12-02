@@ -9,7 +9,7 @@ docker build -t daniel/client .
 
 kubectl expose deployment ingress-nginx-controller --target-port=80 --type=NodePort -n kube-system
 
-cd common/src
+cd common
 npm login
 npm publish --access public
 npm version patch (increment version)
