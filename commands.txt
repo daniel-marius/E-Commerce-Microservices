@@ -1,5 +1,7 @@
 cd auth
 docker build -t daniel/auth .
+// Run this command after updating common packages
+npm update @ticketsms/common
 
 cd ticket
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=...
@@ -21,6 +23,7 @@ npm update @ticketsms/common
 
 cd tickets
 docker build -t daniel/tickets .
+npm update @ticketsms/common
 
 cd nats-test
 kubectl get pods
@@ -31,3 +34,4 @@ skaffold dev
 
 cd orders
 docker build -t daniel/orders .
+npm update @ticketsms/common
