@@ -14,3 +14,5 @@
 - NATS reusable listeners implemented via Abstract Class and Interface with TypeScript
 - New order service added to support basic operations (Create, Read, Delete)
 - New events are emitted when an order is created or cancelled
+- NATS publisher(s)/listener(s) added to tickets and orders services
+- Handling concurrency issues by adding a version number to ticket and order events inside common libraries

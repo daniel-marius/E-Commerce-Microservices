@@ -7,5 +7,5 @@ export const natsWrapper = {
         (subject: string, data: string, callback: () => void) => {
           callback();
       )
-  },
+  }
 };
