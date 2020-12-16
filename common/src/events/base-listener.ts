@@ -11,7 +11,7 @@ export abstract class Listener<T extends Event> {
   abstract subject: T['subject']; // Name of the channel this listener is going to listen to
   abstract queueGroupName: string; // Name of the queue group this listener will join
   abstract onMessage(data: T['data'], msg: Message): void; // Function to run when a message is received
-  private client: Stan; // Pre-initialized NATS client
+  protected client: Stan; // Pre-initialized NATS client
   protected ackWait = 5 * 1000; // Number of seconds this listener has to ack a message
 
   constructor(client: Stan) {

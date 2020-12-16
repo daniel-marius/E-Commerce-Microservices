@@ -1,4 +1,4 @@
-## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, React Next.js, Docker and Kubernetes Part10
+## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, React Next.js, Docker and Kubernetes Part12
 
 ## Features
 
@@ -13,6 +13,6 @@
 - New events are emitted when a ticket is created or updated
 - NATS reusable listeners implemented via Abstract Class and Interface with TypeScript
 - New order service added to support basic operations (Create, Read, Delete)
-- New events are emitted when an order is created or cancelled
+- New events are emitted when the order status is created/cancelled/awaiting/complete
 - NATS publisher(s)/listener(s) added to tickets and orders services
 - Handling concurrency issues by adding a version number to ticket and order events inside common libraries
