@@ -4,7 +4,8 @@ import {
   validateRequest,
   NotFoundError,
   requireAuth,
-  NotAuthorizedError
+  NotAuthorizedError,
+  BadRequestError
 } from '@ticketsms/common';
 
 import { Ticket } from '../models/ticket';
@@ -27,10 +28,15 @@ router.put(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const ticket = await Ticket.findById(req.params.id);
+    const { id } = req.params;
+    const ticket = await Ticket.findById(id.toString());
 
     if (!ticket) {
       throw new NotFoundError();
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError('Cannot edit a reserved ticket!');
     }
 
     if (ticket.userId !== req.currentUser!.id) {
@@ -45,7 +51,7 @@ router.put(
     await ticket.save();
 
     await new TicketUpdatedPublisher(natsWrapper.client).publish({
-      id: ticket.id,
+      id: ticket.id!,
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,

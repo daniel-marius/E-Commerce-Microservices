@@ -1,4 +1,4 @@
-const EXPIRATION_WINDOW_SECONDS = 15 * 60;
+const EXPIRATION_WINDOW_SECONDS = 1 * 60;
 
 import mongoose from "mongoose";
 import express, { Request, Response, Router } from "express";
@@ -33,7 +33,7 @@ router.post(
     const { ticketId } = req.body;
 
     // Find the ticket the user is trying to order in the database
-    const ticket = await Ticket.findById(ticketId);
+    const ticket = await Ticket.findById(ticketId.toString());
     if (!ticket) {
       throw new NotFoundError();
     }
@@ -61,13 +61,13 @@ router.post(
 
     // Publish an event saying that an order was created
     new OrderCreatedPublisher(natsWrapper.client).publish({
-      id: order.id,
+      id: order.id!,
       version: order.version,
       status: order.status,
       userId: order.userId,
       expiresAt: order.expiresAt.toISOString(),
       ticket: {
-        id: ticket.id,
+        id: order.ticket.id!,
         price: ticket.price
       }
     });

@@ -5,7 +5,9 @@ import { NotFoundError } from '@ticketsms/common';
 const router: Router = express.Router();
 
 router.get('/api/tickets/:id', async (req: Request, res: Response) => {
-  const ticket = await Ticket.findById(req.params.id);
+  const { id } = req.params;
+
+  const ticket = await Ticket.findById(id.toString());
 
   if (!ticket) {
     throw new NotFoundError();

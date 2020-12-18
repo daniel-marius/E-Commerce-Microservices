@@ -35,3 +35,7 @@ skaffold dev
 cd orders
 docker build -t daniel/orders .
 npm update @ticketsms/common
+
+cd expiration
+docker build -t daniel/expiration .
+npm update @ticketsms/common
