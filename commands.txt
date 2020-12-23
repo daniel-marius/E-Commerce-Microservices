@@ -3,12 +3,21 @@ docker build -t daniel/auth .
 // Run this command after updating common packages
 npm update @ticketsms/common
 
-cd ticket
+Restart minikube
+minikube delete
+minikube start
+
+Set JWT as a secret:
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=...
+
+Install and enable ingress controller:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+minikube addons enable ingress
 
 cd client
 docker build -t daniel/client .
 
+// Connect from react to nginx
 kubectl get namespace
 kubectl get services
 kubectl get services -n kube-system
@@ -38,4 +47,8 @@ npm update @ticketsms/common
 
 cd expiration
 docker build -t daniel/expiration .
+npm update @ticketsms/common
+
+cd payments
+docker build -t daniel/payments .
 npm update @ticketsms/common

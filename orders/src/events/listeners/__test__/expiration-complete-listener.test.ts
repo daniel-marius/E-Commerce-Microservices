@@ -28,7 +28,7 @@ const setup = async () => {
   await order.save();
 
   const data: ExpirationCompleteEvent['data'] = {
-    orderId: order.id
+    orderId: order.id!
   };
 
   // @ts-ignore
