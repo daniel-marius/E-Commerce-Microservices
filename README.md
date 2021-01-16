@@ -1,4 +1,4 @@
-## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, Redis, React, Next.js, Docker and Kubernetes Part14
+## E-Commerce App using Microservices build with Node, TypeScript, MongoDB, Redis, React, Next.js, Docker and Kubernetes Part15
 
 ## Features
 
@@ -20,3 +20,4 @@
 - NATS publisher and listener added to expiration service
 - Common library updated
 - Payments service + Stripe API
+- React.js Client Side

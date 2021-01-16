@@ -11,7 +11,7 @@ import {
 
 import { Order } from "../models/order";
 import { Payment } from '../models/payment';
-import { PaymentCreatedEvent } from '../events/publishers/payment-created-publisher';
+import { PaymentCreatedPublisher } from '../events/publishers/payment-created-publisher';
 import { stripe } from '../stripe';
 import { natsWrapper } from '../nats-wrapper';
 
@@ -46,14 +46,14 @@ router.post(
     });
 
     const payment = Payment.build({
-      orderId!,
+      orderId,
       stripeId: charge.id
     });
 
     await payment.save();
 
     new PaymentCreatedPublisher(natsWrapper.client).publish({
-      id: payment.id,
+      id: payment.id!,
       orderId: payment.orderId,
       stripeId: payment.stripeId
     });
